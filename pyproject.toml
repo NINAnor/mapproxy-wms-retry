@@ -1,0 +1,24 @@
+[project]
+name = "mapproxy-wms-retry"
+version = "0.1.0"
+authors = [
+    {name = "Francesco Frassinelli", email = "francesco.frassinelli@nina.no"},
+]
+license = {text = "Apache-2.0"}
+dependencies = [
+    "mapproxy",
+    "pyproj",
+]
+
+[tool.black]
+
+[tool.isort]
+# https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+profile = "black"
+
+[tool.ruff]
+fix = true
+ignore = ["E501"]
+
+[project.entry-points."mapproxy"]
+mapproxy_wms_retry = "mapproxy_wms_retry.pluginmodule"
