@@ -1,0 +1,7 @@
+services:
+  mapproxy_wms_retry:
+    build: .
+    ports:
+    - 8080:8080
+    volumes:
+    - ./conf:/app/conf

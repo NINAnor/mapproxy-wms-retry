@@ -1,0 +1,15 @@
+services:
+  demo:
+  wms:
+sources:
+  ortofoto_wms:
+    type: wms_retry
+    retry:
+        error_message: Overforbruk
+    req:
+      url: https://wms.geonorge.no/skwms1/wms.nib?
+      layers: ortofoto
+layers:
+  - name: ortofoto
+    title: ortofoto
+    sources: [ortofoto_wms]
