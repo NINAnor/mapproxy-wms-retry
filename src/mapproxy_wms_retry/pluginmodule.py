@@ -47,7 +47,7 @@ class wms_retry_configuration(WMSSourceConfiguration):
         retry.setdefault("max_tentatives", 10)
         # Create WMS source
         wmssource = super().source(params)
-        # Replaace HTTP client
+        # Replace HTTP client
         wmssource.client.http_client = HTTPClientRetry(**retry)
         return wmssource
 

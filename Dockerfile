@@ -4,7 +4,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt && pip install gunicorn
 COPY pyproject.toml .
-COPY mapproxy_wms_retry/__init__.py mapproxy_wms_retry/pluginmodule.py mapproxy_wms_retry/
+COPY src/mapproxy_wms_retry/__init__.py src/mapproxy_wms_retry/pluginmodule.py src/mapproxy_wms_retry/
 RUN pip install .
 COPY wsgi.py .
 
