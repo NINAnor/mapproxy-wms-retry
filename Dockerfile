@@ -1,13 +1,13 @@
-FROM python:3.12
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt && pip install gunicorn
-COPY pyproject.toml .
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 COPY src/mapproxy_wms_retry/__init__.py src/mapproxy_wms_retry/pluginmodule.py src/mapproxy_wms_retry/
-RUN pip install .
-COPY wsgi.py .
+COPY wsgi.py pyproject.toml uv.lock ./
 
 EXPOSE 8080/TCP
 
-CMD ["gunicorn", "wsgi:application", "--bind", "0.0.0.0:8080", "--workers", "8"]
+CMD ["uv", "run", "gunicorn", "wsgi:application", "--bind", "0.0.0.0:8080", "--workers", "8"]

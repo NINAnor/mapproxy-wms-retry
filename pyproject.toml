@@ -1,11 +1,13 @@
 [project]
 name = "mapproxy-wms-retry"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     {name = "Francesco Frassinelli", email = "francesco.frassinelli@nina.no"},
 ]
-license = {text = "Apache-2.0"}
+license = {text = "GPLv3"}
+requires-python =">=3.10"
 dependencies = [
+    "gunicorn>=23.0.0",
     "mapproxy",
     "pyproj",
 ]
