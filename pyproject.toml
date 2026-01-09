@@ -1,6 +1,6 @@
 [project]
 name = "mapproxy-wms-retry"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
     {name = "Francesco Frassinelli", email = "francesco.frassinelli@nina.no"},
 ]
@@ -9,7 +9,6 @@ requires-python =">=3.10"
 dependencies = [
     "gunicorn>=23.0.0",
     "mapproxy",
-    "pyproj",
 ]
 
 [tool.black]
